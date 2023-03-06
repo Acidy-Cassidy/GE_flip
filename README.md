@@ -1,6 +1,10 @@
 # GE_flip
+
+
 OSRS Grand Exchange Trading Bot
 This is a Python program that analyzes data from the Old School RuneScape (OSRS) Grand Exchange API to identify profitable trading opportunities. It filters the data based on several criteria, including trade volume, price difference, and price trend, and then presents the top 5 items to buy and their recommended sell prices.
+
+
 
 Requirements
 Python 3.6 or higher
@@ -16,7 +20,11 @@ After running the program, you will be prompted to enter the amount of gold you 
 The program will then retrieve the latest data from the OSRS Grand Exchange API and filter it based on the specified criteria.
 The top 5 items to buy and their recommended sell prices will be displayed.
 Configuration
+
+
+
 The following criteria can be adjusted in the program:
+
 
 trade_volume_threshold: The minimum trade volume required for an item to be considered.
 price_difference_threshold: The minimum price difference between the high and low prices for an item to be considered.
@@ -26,3 +34,8 @@ Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+
+
+PLEASE NOTE THIS WAS RAN AND TESTED ON VISUAL STUDIO 2019
+
