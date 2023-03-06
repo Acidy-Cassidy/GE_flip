@@ -35,9 +35,15 @@ The following criteria can be adjusted in the program:
 
 
 trade_volume_threshold: The minimum trade volume required for an item to be considered.
+
 price_difference_threshold: The minimum price difference between the high and low prices for an item to be considered.
+
 price_trend_threshold: The percentage decrease in price required for an item to be considered a good sell opportunity.
+
 days_to_check: The number of days of price history to consider.
+
+
+
 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
