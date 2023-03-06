@@ -19,6 +19,8 @@ This is a Python program that analyzes data from the Old School RuneScape (OSRS)
 
 
 
+
+
 **Installation**
 Clone the repository to your local machine using Git or download the ZIP file.
 Install the required libraries by running the following command in your terminal:
@@ -26,6 +28,8 @@ Install the required libraries by running the following command in your terminal
 **pip install -r requirements.txt**
 
 Run the program using the following command: python GE_flip.py
+
+
 
 
 
@@ -39,6 +43,9 @@ The top 5 items to buy and their recommended sell prices will be displayed. (Pri
 ![image](https://user-images.githubusercontent.com/30472756/223224702-a48013e6-2a67-4405-9e74-7e1865bebaf8.png)
 
 
+
+
+
 **Configuration**
 The following criteria can be adjusted in the program:
 
@@ -50,6 +57,8 @@ The following criteria can be adjusted in the program:
 **price_trend_threshold**: The percentage decrease in price required for an item to be considered a good sell opportunity.
 
 **days_to_check**: The number of days of price history to consider.
+
+
 
 
 
