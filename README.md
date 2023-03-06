@@ -27,6 +27,7 @@ After running the program, you will be prompted to enter the amount of gold you 
 (NOTE THIS WARNING IN RED IS NORMAL AND NON-CRITICAL)
 The program will then retrieve the latest data from the OSRS Grand Exchange API and filter it based on the specified criteria.
 The top 5 items to buy and their recommended sell prices will be displayed.
+
 ![image](https://user-images.githubusercontent.com/30472756/223224702-a48013e6-2a67-4405-9e74-7e1865bebaf8.png)
 
 
