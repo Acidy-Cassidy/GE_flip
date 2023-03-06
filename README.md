@@ -21,7 +21,10 @@ This is a Python program that analyzes data from the Old School RuneScape (OSRS)
 
 **Installation**
 Clone the repository to your local machine using Git or download the ZIP file.
-Install the required libraries by running the following command in your terminal: pip install -r requirements.txt
+Install the required libraries by running the following command in your terminal:
+
+**pip install -r requirements.txt**
+
 Run the program using the following command: python GE_flip.py
 
 
