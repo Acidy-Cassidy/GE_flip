@@ -8,13 +8,13 @@ This is a Python program that analyzes data from the Old School RuneScape (OSRS)
 
 **Requirements**
 
-Python 3.6 or higher
+*Python 3.6 or higher
 
-pandas library
+*pandas library
 
-requests library
+*requests library
 
-tqdm library
+*tqdm library
 
 
 
