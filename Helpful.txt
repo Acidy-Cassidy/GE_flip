@@ -26,7 +26,8 @@ Done.
 A method one might employ:
 
 *Using this program to generate a list of 10+ items in their price range
-*Using a site like: https://www.ge-tracker.com/item/ to see if there is a good potential profit 
-*Win
+*Using a site like: https://www.ge-tracker.com/item/ to see if the suggested item is correctly potentially profitable
+*Create a GE listing with the correct profitable margins
+*Profit
 
 
