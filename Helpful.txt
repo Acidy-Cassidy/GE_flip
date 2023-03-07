@@ -1,0 +1,32 @@
+
+Using this program will not 100% give you the items to sell. Instead it generates a list of potential items to "flip" on the GE. 
+Some example output will look like:
+
+Starting to filter based on input....
+Top 5 items to buy and their recommended sell prices:
+Onyx amulet: Buy at 2600000.0, sell at 5265000.00
+Accursed sceptre (au): Buy at 4800000.0, sell at 4851000.00
+Gilded platebody: Buy at 4966456.0, sell at 4680000.00
+Dragonstone armour set: Buy at 4913555.0, sell at 4657500.00
+Accursed sceptre (u): Buy at 4903466.0, sell at 4481327.70
+Lightbearer: Buy at 4902141.0, sell at 4476978.90
+Staff of the dead: Buy at 4893944.0, sell at 4468999.50
+Staff of light: Buy at 4813578.0, sell at 4415590.80
+Zamorakian hasta: Buy at 4684130.0, sell at 4271644.80
+Ahrim's robetop: Buy at 4595623.0, sell at 4194053.10
+Done.
+
+***NOTES
+
+* There are more than 5 lines listed above ^. You can change these values in the code to print different amounts.
+* You may need to rerun the program if you are running for the first time and get an error - this is due to file generation.
+
+***
+
+A method one might employ:
+
+*Using this program to generate a list of 10+ items in their price range
+*Using a site like: https://www.ge-tracker.com/item/ to see if there is a good potential profit 
+*Win
+
+
