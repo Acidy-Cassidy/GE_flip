@@ -4,6 +4,7 @@
 
 OSRS Grand Exchange Trading Bot
 This is a Python program that analyzes data from the Old School RuneScape (OSRS) Grand Exchange API to identify profitable trading opportunities. It filters the data based on several criteria, including trade volume, price difference, and price trend, and then presents the top 5 items to buy and their recommended sell prices.
+(Checkout helpful.txt for tips)
 
 
 
