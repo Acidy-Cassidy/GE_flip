@@ -1,33 +1,84 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import tkinter as tk
+import os
+from tkinter import filedialog
 
-Using this program will not 100% give you the items to sell. Instead it generates a list of potential items to "flip" on the GE. 
-Some example output will look like:
+def get_files():
+    # Create a root Tk window (usually the first thing for tkinter apps)
+    root = tk.Tk()
+    
+    # This line will hide the main window, we're only interested in the file dialog
+    root.withdraw()
 
-Starting to filter based on input....
-Top 5 items to buy and their recommended sell prices:
-Onyx amulet: Buy at 2600000.0, sell at 5265000.00
-Accursed sceptre (au): Buy at 4800000.0, sell at 4851000.00
-Gilded platebody: Buy at 4966456.0, sell at 4680000.00
-Dragonstone armour set: Buy at 4913555.0, sell at 4657500.00
-Accursed sceptre (u): Buy at 4903466.0, sell at 4481327.70
-Lightbearer: Buy at 4902141.0, sell at 4476978.90
-Staff of the dead: Buy at 4893944.0, sell at 4468999.50
-Staff of light: Buy at 4813578.0, sell at 4415590.80
-Zamorakian hasta: Buy at 4684130.0, sell at 4271644.80
-Ahrim's robetop: Buy at 4595623.0, sell at 4194053.10
-Done.
+    # Open the file dialog and get the path of the selected files
+    file_paths = filedialog.askopenfilenames(filetypes=[('CSV Files', '*.csv')])
 
-***NOTES
+    # If the user didn't select a file, quit the function
+    if not file_paths:
+        print("No files selected.")
+        return None
 
-* There are more than 5 lines listed above ^. You can change these values in the code to print different amounts.
-* You may need to rerun the program if you are running for the first time and get an error - this is due to file generation.
+    # Return the selected files
+    return file_paths
 
-***
+def prediction_results():
+    file_paths = get_files()  # corrected from get_file() to get_files()
+    if not file_paths:
+        return
 
-A method one might employ:
+    # Handle each file separately
+    for file_path in file_paths:
+        # Load the predictions and results CSV file
+        results_df = pd.read_csv(file_path)
 
-*Using this program to generate a list of 10+ items in their price range
-*Using a site like: https://www.ge-tracker.com/item/ to see if the suggested item is correctly potentially profitable
-*Create a GE listing with the correct profitable margins
-*Profit
+        # Convert the 'Actual_Price_After_1min' to float
+        results_df["Actual_Price_After_1min"] = pd.to_numeric(results_df["Actual_Price_After_1min"], errors='coerce')
+
+        # Calculate the percentage difference between predictions and true_labels
+        results_df["percentage_difference"] = abs(results_df["Predicted_Price"] - results_df["Actual_Price_After_1min"]) / results_df["Actual_Price_After_1min"] * 100
+
+        # Calculate the average percentage difference
+        average_percentage_difference = results_df["percentage_difference"].mean()
+
+        print(f"Average percentage difference between predictions and actual values: {average_percentage_difference:.2f}%")
+
+        # Print the distribution of percentage differences
+        print("\nDistribution of percentage differences:")
+        print(results_df["percentage_difference"].describe())
+
+        # Print some examples of predictions and actual values
+        print("\nExamples of predictions and actual values:")
+        print(results_df[["Predicted_Price", "Actual_Price_After_1min"]].head(20))
+
+        # Plot the predictions and actual_prices
+        plt.figure(figsize=(10, 5))
+        plt.plot(results_df["Predicted_Price"].values, label="Predicted")
+        plt.plot(results_df["Actual_Price_After_1min"].values, label="Actual")
+        plt.legend()
+        plt.title("Predicted vs Actual Values")
+        plt.xlabel("Index")
+        plt.ylabel("Value")
+        plt.savefig("predictions_vs_actuals.pdf", format="pdf")
+        plt.show()
+
+        # Plot the differences between predicted and actual values
+        plt.figure(figsize=(10, 5))
+        plt.plot(results_df["Predicted_Price"].values - results_df["Actual_Price_After_1min"].values, label="Difference")
+        plt.legend()
+        plt.title("Difference between Predicted and Actual Values")
+        plt.xlabel("Index")
+        plt.ylabel("Difference")
+        plt.savefig("predictions_vs_actuals_difference.pdf", format="pdf")
+        plt.show()
 
 
+if __name__ == "__main__":
+    while True:
+        option = input("Prediction Results: Press P or Q to quit\n")
+        if option.lower() == 'p':
+            prediction_results()
+        elif option.lower() == 'q':
+            break
+        else:
+            print("Invalid option selected.")
