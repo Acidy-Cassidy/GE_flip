@@ -1,14 +1,24 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Adjust the CSV file URL according to your server setup
-    const csvUrl = '/prediction_files/predictions5min.csv';
+    // Define all CSV file URLs
+    const csvFiles = [
+        '/prediction_files/predictions5min.csv',
+        '/prediction_files/predictions5minH.csv',
+        '/prediction_files/predictions5minL.csv',
+        '/prediction_files/predictions10minC.csv',
+        '/prediction_files/predictions10minH.csv',
+        '/prediction_files/predictions10minL.csv'
+    ];
 
-    fetch(csvUrl)
-    .then(response => response.text())
-    .then(data => {
-        let result = parseCSV(data);
-        displayPredictions(result);
-    })
-    .catch(error => console.error('Error fetching the CSV file:', error));
+    // Loop through each CSV file URL and fetch the data
+    csvFiles.forEach(csvUrl => {
+        fetch(csvUrl)
+        .then(response => response.text())
+        .then(data => {
+            let result = parseCSV(data);
+            displayPredictions(result, csvUrl);
+        })
+        .catch(error => console.error(`Error fetching the CSV file ${csvUrl}:`, error));
+    });
 });
 
 function parseCSV(csvData) {
@@ -16,14 +26,21 @@ function parseCSV(csvData) {
     return lines.map(line => line.split(","));
 }
 
-function displayPredictions(data) {
+function displayPredictions(data, csvUrl) {
     let predictionsDiv = document.getElementById('predictions');
-    let htmlContent = "<ul>";
+    // Extract file name from csvUrl for display
+    let fileName = csvUrl.split('/').pop();
+
+    // Add a header for each CSV file
+    let htmlContent = `<h2>${fileName}</h2><ul>`;
+
     data.forEach((row, index) => {
         if (index > 0) { // Skip header row
             htmlContent += `<li>${row.join(' - ')}</li>`;
         }
     });
     htmlContent += "</ul>";
-    predictionsDiv.innerHTML = htmlContent;
+
+    // Append the current CSV data to the predictionsDiv
+    predictionsDiv.innerHTML += htmlContent;
 }
